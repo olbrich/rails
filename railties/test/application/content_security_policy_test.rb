@@ -135,7 +135,7 @@ module ApplicationTests
           p.style_src   :self, :https
         end
 
-        Rails.application.config.content_security_policy_nonce_generator = proc { "iyhD0Yc0W+c=" }
+        Rails.application.config.content_security_policy_nonce_generator = ->(request) { request.session.id.to_s }
         Rails.application.config.content_security_policy_nonce_directives = %w(script-src)
       RUBY
 
